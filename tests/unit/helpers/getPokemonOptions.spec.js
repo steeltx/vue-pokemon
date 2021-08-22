@@ -1,4 +1,4 @@
-import { getPokemons } from '@/helpers/getPokemonOptions'
+import getPokemonOptions, { getPokemons, getPokemonNames } from '@/helpers/getPokemonOptions'
 
 describe('getPokemonOptions helpers', () => {
     
@@ -15,11 +15,49 @@ describe('getPokemonOptions helpers', () => {
 
     })
 
-    test('debe de retornar un arreglo de 4 elementos con nombres de pokemons', () => {
+    test('debe de retornar un arreglo de 4 elementos con nombres de pokemons', async () => {
+
+        const pokemonNames = await getPokemonNames([1,2,3,4])
+
+        // construir respuesta esperada
+        const respuesta = [
+            { name: 'bulbasaur', id: 1 },
+            { name: 'ivysaur', id: 2 },
+            { name: 'venusaur', id: 3 },
+            { name: 'charmander', id: 4 }
+        ]
+
+        // evaluar los valores de los array, no usar toBe
+        expect(pokemonNames).toStrictEqual(respuesta)
             
     })
 
-    test('getPokemonOptions debe de retornar un arreglo mezclado', () => {
+    test('getPokemonOptions debe de retornar un arreglo mezclado', async () => {
+        
+        const pokemons = await getPokemonOptions()
+
+        // evaluar la cantidad de elememtos en el arreglo
+        expect(pokemons.length).toBe(4)
+
+        // evaluar los tipos de datos de los 4 elementos
+        expect(pokemons).toEqual([
+            { 
+                name: expect.any(String),
+                id: expect.any(Number)
+            },
+            { 
+                name: expect.any(String),
+                id: expect.any(Number)
+            },
+            { 
+                name: expect.any(String),
+                id: expect.any(Number)
+            },
+            { 
+                name: expect.any(String),
+                id: expect.any(Number)
+            }
+        ])
         
     })
     
