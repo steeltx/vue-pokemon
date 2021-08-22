@@ -1,5 +1,8 @@
 # 04-pokemon-game
 
+## Demo
+Open [https://vue-pokemon-game-tx.netlify.app/](https://vue-pokemon-game-tx.netlify.app/)
+
 ## Project setup
 ```
 yarn install
