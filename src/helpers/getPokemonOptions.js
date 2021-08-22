@@ -1,6 +1,6 @@
 import pokemonApi from '../api/pokemonApi'
 
-const getPokemons = () => {
+export const getPokemons = () => {
 
     // crear arreglo de 650 elementos
     const pokemonsArr = Array.from(Array(650))
@@ -23,7 +23,7 @@ const getPokemonOptions = async () => {
 
 }
 
-const getPokemonNames = async ([ a,b,c,d] = []) => {
+export const getPokemonNames = async ([ a,b,c,d] = []) => {
 
     // generación del arreglo con las 4 peticiones
     const promiseArr = [
