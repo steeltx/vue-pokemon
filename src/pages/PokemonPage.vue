@@ -7,14 +7,17 @@
         <h1>¿Quién es este pokémon?</h1>
 
         <!-- IMG -->
-        <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
+        <PokemonPicture 
+            :pokemonId="pokemon.id" 
+            :showPokemon="showPokemon"/>
 
         <!-- Opciones -->
-        <PokemonOptions :pokemons="pokemonArr" />
+        <PokemonOptions 
+            :pokemons="pokemonArr" 
+            @selection="checkAnswer"/>
 
     </div>
    
-
 </template>
 
 <script>
@@ -41,6 +44,10 @@ export default {
             this.pokemonArr = await getPokemonOptions()
             const rndInt = Math.floor(Math.random() * 4)
             this.pokemon = this.pokemonArr[rndInt]
+        },
+        // ejecutar funcion al ser emitida desde componente hijo
+        checkAnswer(pokemonId){
+            this.showPokemon = true
         }
     },
     mounted(){
